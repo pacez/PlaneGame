@@ -24,11 +24,12 @@ export default class Plane {
 
     // 初始化创建dom
     init = (cb) => {
-        const { uuid } = this.props;
+        const { uuid,blood=1 } = this.props;
         this.plane = document.createElement("div");
         this.plane.className = `plane`;
         this.plane.id = uuid;
         this.plane.style.visibility = "hidden";
+        this.blood = blood;
         document.body.appendChild(this.plane);
     }
 

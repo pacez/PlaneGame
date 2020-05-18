@@ -78,12 +78,12 @@ html,body {
     display: inline-block;
     background-size: cover;
     position: absolute;
+    background-repeat: no-repeat;
+    background-position: center center;
     &.player-plane {
         width: 3rem;
         height: 3*(8/6.6)+rem;
         background-image: url('./images/plane_player.gif');
-        background-repeat: no-repeat;
-        background-position: center center;
         &.die {
              background-image: url('./images/plane_player_boom.gif');
         }
@@ -92,10 +92,30 @@ html,body {
         width: 1.8rem;
         height: 1.8*(24/34)+rem;
         background-image: url('./images/plane_small.png');
-        background-repeat: no-repeat;
-        background-position: center center;
         &.die {
              background-image: url('./images/plane_small_boom.gif');
+        }
+    }
+    &.leader-plane {
+        width: 2.2rem;
+        height: 2.2*(64/46)+rem;
+        background-image: url('./images/plane_mid.png');
+        &.hit {
+             background-image: url('./images/plane_mid_target.png');
+        }
+        &.die {
+             background-image: url('./images/plane_mid_boom.gif');
+        }
+    }
+    &.boss-plane {
+        width: 3.5rem;
+        height: 3.5*(169/110)+rem;
+        background-image: url('./images/plane_boss.png');
+        &.hit {
+             background-image: url('./images/plane_boss_target.png');
+        }
+        &.die {
+             background-image: url('./images/plane_boss_boom.gif');
         }
     }
 }

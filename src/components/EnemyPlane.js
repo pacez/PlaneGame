@@ -12,9 +12,16 @@ export default class EnemyPlane extends Plane {
         this.ready();
     }
 
+    planeTypeMap = {
+        'normal': 'enemy-plane',
+        'leader': 'leader-plane',
+        'boss': 'boss-plane',
+    }
+
     ready = () => {
         // 初始化玩家飞机位置，缓存飞机属性
-        this.plane.classList.add('enemy-plane');
+        const { type = 'normal' } =  this.props;
+        this.plane.classList.add(this.planeTypeMap[type]);
         this.plane.style.visibility = 'visible';
         this.attrbutes = {
             width: parseInt(this.plane.offsetWidth, 10),
@@ -57,6 +64,7 @@ export default class EnemyPlane extends Plane {
 
         return false
     }
+    
 
     // 碰撞侦测
     crashChecking = () => {
@@ -74,12 +82,25 @@ export default class EnemyPlane extends Plane {
 
             // 被子弹击中检测
             if (bullets.length > 0) {
+                let { plane } = this; 
                 bullets.find((bullet,index) => {
                     if (this.isCrash(bullet)) {
-                        this.destory({
-                            isCount: true,
-                            isHit: true
-                        });
+                        this.blood -= 1;
+                        // 击中效果
+                        plane.classList.add('hit');
+
+                        // 延时移除击中效果
+                        setTimeout(() => {
+                            plane.classList.remove('hit');
+                        }, 500);
+
+                        if(this.blood<=0) {
+                            // 血量清0时，被击毁。
+                            this.destory({
+                                isCount: true,
+                                isHit: true
+                            });
+                        }
                         bullet.destory();
                         // 一定要记得从子弹队列中移除，否则循环时报错
                         bullets.splice(index,1);
@@ -109,10 +130,10 @@ export default class EnemyPlane extends Plane {
 
         if (isCount) {
             // 销毁时是否计算分值等
-            const { gameData, setGameData } = this.props;
-            const { killCount, totalScore, score } = gameData;
+            const { gameData, setGameData, score=10 } = this.props;
+            const { killCount, totalScore } = gameData;
             setGameData('killCount', killCount + 1);
-            setGameData('totalScore', totalScore + score.enemyPlane);
+            setGameData('totalScore', totalScore + score );
         }
     }
 
