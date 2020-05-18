@@ -65,6 +65,7 @@ export default class EnemyPlane extends Plane {
         const { target, gameData } = this.props;
         const bullets = target.bullets;
         this.intervalTargetCrash = setInterval(() => {
+            // 飞机碰撞检查
             if (this.isCrash(target) || gameData.status===3) {
                 // 销毁敌机
                 this.destory();
@@ -72,19 +73,21 @@ export default class EnemyPlane extends Plane {
                 target.destory();
             }
 
+            // 被子弹击中检测
             if (bullets.length > 0) {
-                bullets.find(bullet => {
+                bullets.find((bullet,index) => {
                     if (this.isCrash(bullet)) {
                         this.destory({
                             isCount: true,
                             isHit: true
                         });
                         bullet.destory();
+                        // 一定要记得从子弹队列中移除，否则循环时报错
+                        bullets.splice(index,1);
                         return true
                     }
                 });
             }
-            // console.log('crashChecking')
         }, 100);
     }
 
