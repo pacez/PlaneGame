@@ -42,7 +42,7 @@ export default class EnemyPlane extends Plane {
 
     // 碰撞检测
     isCrash = (target) => {
-        // const { target } = this.props;
+        // 此处碰撞检查，以两个方型元素为检查项。
         // 当前元素，坐标，尺寸
         var current_y = this.position.y;
         var current_x = this.position.x;
@@ -65,7 +65,6 @@ export default class EnemyPlane extends Plane {
         return false
     }
     
-
     // 碰撞侦测
     crashChecking = () => {
         // 目标飞机碰撞检测
@@ -78,6 +77,7 @@ export default class EnemyPlane extends Plane {
                 this.destory();
                 // 销毁玩家飞机
                 target.destory();
+                return 
             }
 
             // 被子弹击中检测
