@@ -1,8 +1,9 @@
 # PlaneGame
 打飞机小游戏，教学使用，主要用于培养前端开发人员，基于ES6类的概念，进行面向对象编辑的思维训练。
-请使用chrome浏览器的，移动设备模拟窗口查看。
 
-![preview](https://github.com/pacez/PlaneGame/raw/master/preview.png)
+请使用chrome移动设备模拟窗口查看。
+
+![preview](//github.com/pacez/PlaneGame/raw/master/preview.png)
 
 ### 运行方法：
 1. 安装依赖：yarn  或者 npm i 
