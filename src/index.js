@@ -63,7 +63,7 @@ class Game {
                 if (bossCreateCount % 5 === 0 && bossCreateCount > 0) {
                     // 每生产5只中型敌机，产生一只BOSS敌机
                     new EnemyPlane({
-                        blood: blood * 5, // BOSS敌机的血量是普通敌机的5倍
+                        blood: blood * 10, // BOSS敌机的血量是普通敌机的5倍
                         speed: speed * .8, // BOSS敌机的速度是普通敌机的.8倍
                         gameData: this.data,
                         target: this.PlayerPlane,
@@ -75,8 +75,8 @@ class Game {
 
                 // 每生产5只普通敌机，产生一只中型敌机
                 new EnemyPlane({
-                    blood: blood * 3, // 中型敌机的血量是普通敌机的3倍
-                    speed: speed*1, // 中型敌机的速度是普通敌机的1.2倍
+                    blood: blood * 5, // 中型敌机的血量是普通敌机的3倍
+                    speed: speed*1.2, // 中型敌机的速度是普通敌机的1.2倍
                     gameData: this.data,
                     target: this.PlayerPlane,
                     setGameData: this.setData,
@@ -95,7 +95,7 @@ class Game {
                 setGameData: this.setData
             });
 
-        },1200);
+        },1000);
     }
     /* 游戏开始 */
     startGame = () => {
@@ -106,8 +106,6 @@ class Game {
         this.PlayerPlane = new PlayerPlane({
             blood: blood,
             speed: speed,
-            shotEnabled: true,
-            contrlEnabled: true,
             gameData: this.data,
             setGameData: this.setData
         });
@@ -118,6 +116,6 @@ class Game {
 
 // 实例化游戏 
 new Game({
-    speed: 10,
-    blood: 1,
+    speed: 10, // 敌机基准速度，不同种类，倍率不一样。
+    blood: 1, // 敌机基准血量，不同种类，倍率不一样。
 });

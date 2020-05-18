@@ -48,40 +48,31 @@ export default class PlayerPlane extends Plane {
         this.initControllerKeyboard();
     }
 
-    move = (keyCode, config = {}) => {
+    move = (keyCode) => {
         let x = 0,
             y = 0;
-        const { limitArea, overDestory } = config;
         const { speed } = this.props;
-        const C_X = this.plane.offsetLeft;
-        const C_Y = this.plane.offsetTop;
+        const C_X = this.position.x;
+        const C_Y = this.position.y;
         const { height, width } = this.attrbutes;
 
         //38-上 40-下 37-左 39-右
         if (this.keyMaps[keyCode] == 'top') {
             y -= speed;
             if (C_Y + y <= 0) {
-                if (limitArea) {
-                    y = 0;
-                }
+                y = 0;
             }
         }
         if (this.keyMaps[keyCode] == 'bottom') {
             y += speed
             if (C_Y + y + height >= this.mainHeight) {
-                // 向下超出显示区
-                if (limitArea) {
-                    // 超出不位移
-                    y = 0;
-                }
+                y = 0;
             }
         }
         if (this.keyMaps[keyCode] == 'left') {
             x -= speed
             if (C_X + x <= 0) {
-                if (limitArea) {
-                    x = 0;
-                }
+                x = 0;
             }
         }
         if (this.keyMaps[keyCode] == 'right') {
@@ -128,18 +119,15 @@ export default class PlayerPlane extends Plane {
     }
 
     keydown = (e) => {
-        const { shotEnabled, contrlEnabled } = this.props;
         const keyCode = e.keyCode;
-        if (contrlEnabled) {
-            // 开启飞机方向控制，开始移动
-            this.createIntervalMove();
-            const direction = this.keyMaps[keyCode];
-            if (direction) {
-                this.keyStatus[direction] = true;
-            }
+        // 开始移动
+        this.createIntervalMove();
+        const direction = this.keyMaps[keyCode];
+        if (direction) {
+            this.keyStatus[direction] = true;
         }
 
-        if (shotEnabled && keyCode == 32) {
+        if (keyCode == 32) {
             // 先发一颗，避免由于定时器产生的发射子弹延时
             this.sendBullet();
             // 启动开火, 开始射击
@@ -149,18 +137,15 @@ export default class PlayerPlane extends Plane {
     }
 
     keyup = (e) => {
-        const { shotEnabled, contrlEnabled } = this.props;
         const keyCode = e.keyCode;
-        if (contrlEnabled) {
-            // 开启飞机方向控制，停止移动
-            const direction = this.keyMaps[keyCode];
-            if (direction) {
-                this.keyStatus[direction] = false;
-            }
-            this.clearIntervalMove();
+        //停止移动
+        const direction = this.keyMaps[keyCode];
+        if (direction) {
+            this.keyStatus[direction] = false;
         }
+        this.clearIntervalMove();
 
-        if (shotEnabled && keyCode == 32) {
+        if (keyCode == 32) {
             // 启动开火，停止射击
             this.stopFire()
             console.log('stopFire')
