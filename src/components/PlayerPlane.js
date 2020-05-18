@@ -1,7 +1,7 @@
 import Plane from './Plane';
 
 /**
- *
+ * 玩家飞机类， 具备开火，停火，控制移动等方法
  *
  * @class PlayerPlane
  * @extends {Plane}

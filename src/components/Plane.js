@@ -1,5 +1,11 @@
 import Bullet from './Bullet';
 
+/**
+ * 飞机基类，敌机，玩家飞机基于此扩展
+ *
+ * @export
+ * @class Plane
+ */
 export default class Plane {
 
 

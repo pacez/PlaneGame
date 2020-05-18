@@ -1,8 +1,7 @@
 import Plane from './Plane';
-import Bullet from './Bullet';
 
 /**
- *
+ * 敌机类
  *
  * @class EnemyPlane
  * @extends {Plane}

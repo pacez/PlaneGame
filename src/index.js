@@ -3,7 +3,7 @@ import PlayerPlane from './components/PlayerPlane';
 import EnemyPlane from './components/EnemyPlane';
 
 /**
- * 
+ * 游戏类，包含游戏基本数据信息。基础事件绑定。
  *
  * @class Game
  */
@@ -26,19 +26,16 @@ class Game {
             this.startGame();
         });
     }
-
     // 根据游戏数据刷新UI上数据变化
     refreshUI = () => {
         document.getElementById('killCount').innerHTML = this.data.killCount;
         document.getElementById('totalScore').innerHTML = this.data.totalScore;
     }
-
     // 设置游戏数据
     setData = (key,value) => {
         this.data[key] = value;
         this.refreshUI();
     }
-
     // 游戏自身相关数据
     data = {
         status: 0, // 游戏状态 0 未开始,1进行中,2成功,3失败
@@ -48,7 +45,6 @@ class Game {
             enemyPlane: 10 // 每个敌机多少分
         }
     }
-
     //敌机工厂 
     enemyPlaneFactory = () => {
         const { speed, blood } = this.props;
@@ -67,7 +63,6 @@ class Game {
             });
         },1200);
     }
-
     /* 游戏开始 */
     startGame = () => {
         const { speed, blood } = this.props;
@@ -87,6 +82,7 @@ class Game {
     }
 }
 
+// 实例化游戏 
 new Game({
     speed: 10,
     blood: 10,
