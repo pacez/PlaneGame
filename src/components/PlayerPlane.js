@@ -174,7 +174,8 @@ export default class PlayerPlane extends Plane {
 
     destory = () => {
         // 清理定时器
-        this.clearIntervalAction();
+        this.clearIntervalAction(); // 清除玩家飞机的自定义定时器
+        this.clearAllInterval(); // 清除基于Plane的定时器
         // 解绑事件
         document.removeEventListener('keydown', this.keydown);
         document.removeEventListener('keyup', this.keyup);

@@ -2,7 +2,6 @@ import Bullet from './Bullet';
 
 export default class Plane {
 
-    intervalFire = null;
 
     /**
      *Creates an instance of Plane.
@@ -37,6 +36,7 @@ export default class Plane {
 
     // 子弹队列
     bullets = []
+    intervalFire = null;
 
     // 发射子弹
     sendBullet = () => {
@@ -62,5 +62,9 @@ export default class Plane {
         window.clearInterval(this.intervalFire);
         this.intervalFire = null;
         console.log('stop fire...')
+    }
+
+    clearAllInterval = () => {
+        this.stopFire();
     }
  }
