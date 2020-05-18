@@ -7,8 +7,6 @@ import Bullet from './Bullet';
  * @class Plane
  */
 export default class Plane {
-
-
     /**
      *Creates an instance of Plane.
      * @param {{uuid:Number}} props
@@ -24,16 +22,17 @@ export default class Plane {
         this.init();
     }
 
+    // 初始化创建dom
     init = (cb) => {
         const { uuid } = this.props;
         this.plane = document.createElement("div");
         this.plane.className = `plane`;
         this.plane.id = uuid;
-        this.plane.style.position = "absolute";
         this.plane.style.visibility = "hidden";
         document.body.appendChild(this.plane);
     }
 
+    // 设置飞机位置, 并缓存该位置
     setPosition = (x = 0, y = 0) => {
         this.plane.style.left = x + 'px';;
         this.plane.style.top = y + 'px';
@@ -70,6 +69,7 @@ export default class Plane {
         console.log('stop fire...')
     }
 
+    // 在销毁扩展实例时，清理基类的定时触发器。
     clearAllInterval = () => {
         this.stopFire();
     }
