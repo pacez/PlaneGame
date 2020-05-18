@@ -38,8 +38,8 @@ export default class Plane {
     // 子弹队列
     bullets = []
 
-
-    createBullet = () => {
+    // 发射子弹
+    sendBullet = () => {
         const y = this.plane.offsetTop;
         const x = this.plane.offsetLeft + this.attrbutes.width / 2;
         this.bullets.push(new Bullet({
@@ -51,7 +51,7 @@ export default class Plane {
     fire = () => {
         if (this.intervalFire===null) {
             this.intervalFire = setInterval(() => {
-                this.createBullet();
+                this.sendBullet();
                 console.log('fire...')
             }, 200);
         }

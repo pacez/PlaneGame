@@ -140,6 +140,8 @@ export default class PlayerPlane extends Plane {
         }
 
         if (shotEnabled && keyCode == 32) {
+            // 先发一颗，避免由于定时器产生的发射子弹延时
+            this.sendBullet();
             // 启动开火, 开始射击
             this.fire();
             console.log('fire')

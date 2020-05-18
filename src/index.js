@@ -1,7 +1,6 @@
 import './style.scss';
 import PlayerPlane from './components/PlayerPlane';
 import EnemyPlane from './components/EnemyPlane';
-import Bullet from './components/Bullet';
 
 /**
  * 
@@ -46,7 +45,7 @@ class Game {
         killCount: 0, // 杀敌数
         totalScore: 0, // 总分
         score: {
-            enemyPlane: 10
+            enemyPlane: 10 // 每个敌机多少分
         }
     }
 
