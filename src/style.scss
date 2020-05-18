@@ -1,0 +1,110 @@
+html{font-size:16px;}
+@media screen and (min-width:375px){html{/* iPhone6的375px尺寸作为16px基准，414px正好18px大小,600 20px */font-size:calc(100% + 2 * (100vw - 375px) / 39);font-size:calc(16px + 2 * (100vw - 375px) / 39);}}
+@media screen and (min-width:414px){html{/* 414px-1000px每100像素宽字体增加1px(18px-22px) */font-size:calc(112.5% + 4 * (100vw - 414px) / 586);font-size:calc(18px + 4 * (100vw - 414px) / 586);}}
+@media screen and (min-width:600px){html{/* 600px-1000px每100像素宽字体增加1px(20px-24px) */font-size:calc(125% + 4 * (100vw - 600px) / 400);font-size:calc(20px + 4 * (100vw - 600px) / 400);}}
+@media screen and (min-width:1000px){html{/* 1000px往后是每100像素0.5px增加 */font-size:calc(137.5% + 6 * (100vw - 1000px) / 1000);font-size:calc(22px + 6 * (100vw - 1000px) / 1000);}}
+body{
+    background: url(./images/start_bg.png) no-repeat center 0 rgb(195,200,201);
+    background-size: 100% auto;
+    &.start {
+        background-image: url(./images/bg.png);
+    }
+}
+
+html,body {
+    height: 100%;
+    overflow: hidden;
+}
+
+
+.start {
+    .ctrl-part {
+        display: none;
+    }
+}
+
+
+/* 主样式 */
+
+.main {
+    margin: 0 auto 0;
+    /* 得分情况 */
+    .title-score {
+        padding: 1rem;
+        line-height: 1.5rem;
+    }
+    /* 标题 */
+    .title {
+        margin: 12rem auto 0;
+        font-size: 2rem;
+        text-align: center;
+        animation: titlecolor 5s infinite;
+    }
+    @-webkit-keyframes titlecolor {
+        0% {
+            color: #63a35c;
+        }
+        20% {
+            color: #4f823c;
+        }
+        40% {
+            color: #ff0084;
+        }
+        60% {
+            color: rgb(156, 98, 21);
+        }
+        100% {
+            color: green;
+        }
+    }
+    /* 开始按钮 */
+    .btn {
+        margin: 0 auto;
+        text-align: center;
+        margin-top: 1.6rem;
+        div {
+            width: 10rem;
+            margin: 1.2rem auto 1rem;
+            height: 2.5rem;
+            line-height: 2.5rem;
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.575);
+            cursor: pointer;
+        }
+    }
+}
+
+.plane {
+    display: inline-block;
+    background-size: cover;
+    &.player-plane {
+        width: 3rem;
+        height: 3*(8/6.6)+rem;
+        background-image: url('./images/plane_player.gif');
+        background-repeat: no-repeat;
+        background-position: center center;
+        &.die {
+             background-image: url('./images/plane_player_boom.gif');
+        }
+    }
+    &.enemy-plane {
+        width: 1.8rem;
+        height: 1.8*(24/34)+rem;
+        background-image: url('./images/plane_small.png');
+        background-repeat: no-repeat;
+        background-position: center center;
+        &.die {
+             background-image: url('./images/plane_small_boom.gif');
+        }
+    }
+}
+
+.bullet {
+    display: inline-block;
+    visibility: hidden;
+    background: url('./images/bullet.png') no-repeat center center;
+    background-size: contain;
+    width: .3rem;
+    height: (14/6)*.3rem;
+    position: absolute;
+}
