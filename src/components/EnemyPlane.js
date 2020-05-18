@@ -44,18 +44,14 @@ export default class EnemyPlane extends Plane {
     isCrash = (target) => {
         // 此处碰撞检查，以两个方型元素为检查项。
         // 当前元素，坐标，尺寸
-        var current_y = this.position.y;
-        var current_x = this.position.x;
-        var current_height = this.attrbutes.height;
-        var current_width = this.attrbutes.width;
+        const { y, x } = this.position;
+        const { height, width } = this.attrbutes;
         // 目标元素，坐标，尺寸
-        var target_y = target.position.y;
-        var target_x = target.position.x;
-        var target_height = target.attrbutes.height;
-        var target_width = target.attrbutes.width;
+        const { y: target_y, x: target_x } = target.position;
+        const { height: target_height, width: target_width } = target.attrbutes;
 
-        const isCrossY = (current_y + current_height >= target_y && current_y <= target_y + target_height)  // Y轴交叉
-        const isCrossX = (current_x + current_width >= target_x && current_x <= target_x + target_width)  // X轴交叉
+        const isCrossY = (y + height >= target_y && y <= target_y + target_height)  // Y轴交叉
+        const isCrossX = (x + width >= target_x && x <= target_x + target_width)  // X轴交叉
 
         if (isCrossY && isCrossX) {
             // 撞上了

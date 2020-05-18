@@ -3,7 +3,7 @@
 
 请使用chrome移动设备模拟窗口查看。
 
-![preview](//github.com/pacez/PlaneGame/raw/master/preview.png)
+![preview](https://s1.ax1x.com/2020/05/18/YhXnEV.png)
 
 ### 运行方法：
 1. 安装依赖：yarn  或者 npm i 
