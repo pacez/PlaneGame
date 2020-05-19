@@ -7,9 +7,15 @@
 <img src="https://raw.githubusercontent.com/pacez/PlaneGame/master/doc/preview.png" height = "360" />
 
 
-### 运行方法：
+### 开发：
 1. 安装依赖：yarn  或者 npm i 
 1. 启动服务：yarn dev 或者 npm run dev
+
+执行完，会自动打开浏览器进行开发预览页面
+
+### 构建：
+1. 构建命令：yarn build 或者 npm run build
+构建完，会在根目录下生成用于生产环境的dist目录。
 
 
 ### 思考步骤：

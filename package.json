@@ -5,7 +5,8 @@
   "author": "pace_zhong@foxmail.com",
   "license": "MIT",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --config webpack.config.js"
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --config webpack.config.js",
+    "build": "webpack --config webpack.config.js"
   },
   "devDependencies": {
     "@babel/core": "^7.9.6",
