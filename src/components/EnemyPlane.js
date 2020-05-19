@@ -12,6 +12,7 @@ export default class EnemyPlane extends Plane {
         this.ready();
     }
 
+    // 映射不同种类飞机，不同的样式类
     planeTypeMap = {
         'normal': 'enemy-plane',
         'leader': 'leader-plane',
