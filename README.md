@@ -11,7 +11,7 @@
 1. 安装依赖：yarn  或者 npm i 
 1. 启动服务：yarn dev 或者 npm run dev
 
-执行完，会自动打开浏览器进行开发预览页面
+执行完，会自动打开浏览器进入开发预览页，具体基本的热更新能力。
 
 ### 构建：
 1. 构建命令：yarn build 或者 npm run build
