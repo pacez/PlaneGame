@@ -4,7 +4,8 @@
 
 除了babel运行时，不依赖其他功能性第三方库实现。
 
-![preview](https://raw.githubusercontent.com/pacez/PlaneGame/master/doc/preview.png)
+<div align=center><img src="https://raw.githubusercontent.com/pacez/PlaneGame/master/doc/preview.png" height = "360" /></div>
+
 
 ### 运行方法：
 1. 安装依赖：yarn  或者 npm i 
