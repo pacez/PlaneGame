@@ -18,6 +18,7 @@ export default class PlayerPlane extends Plane {
         bottom: false
     }
 
+    // keyCode与方向的影响
     keyMaps = {
         37: 'left',
         39: 'right',
@@ -25,6 +26,7 @@ export default class PlayerPlane extends Plane {
         40: 'bottom'
     }
 
+    // 方向与keyCode映射
     directionMaps = {
         left: 37,
         right: 39,
@@ -49,6 +51,7 @@ export default class PlayerPlane extends Plane {
         this.initControllerKeyboard();
     }
 
+    // 控制飞机移动的方法
     move = (keyCode) => {
         let x = 0,
             y = 0;
@@ -102,11 +105,13 @@ export default class PlayerPlane extends Plane {
         }
     }
 
+    // 清理定时器
     clearIntervalAction = () => {
         window.clearInterval(this.interval);
         this.interval = null
     }
 
+    // 处理按钮状态
     clearIntervalMove = () => {
         let flag = true;
         for (var i in this.keyStatus) {
@@ -154,11 +159,13 @@ export default class PlayerPlane extends Plane {
         }
     }
 
+    // 注册按键事件
     initControllerKeyboard = () => {
         document.addEventListener('keydown', this.keydown);
         document.addEventListener('keyup', this.keyup)
     }
 
+    // 摧毁自身
     destory = () => {
         // 清理定时器
         this.clearIntervalAction(); // 清除玩家飞机的自定义定时器
@@ -167,7 +174,7 @@ export default class PlayerPlane extends Plane {
         document.removeEventListener('keydown', this.keydown);
         document.removeEventListener('keyup', this.keyup);
         this.plane.classList.add('die');
-        const { setGameData, gameData } = this.props;
+        const { setGameData } = this.props;
         setGameData('status',3);
     }
 
