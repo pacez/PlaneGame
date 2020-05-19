@@ -4,7 +4,7 @@
 
 除了babel运行时，不依赖其他功能性第三方库实现。
 
-<div align=center><img src="https://raw.githubusercontent.com/pacez/PlaneGame/master/doc/preview.png" height = "360" /></div>
+<div style="background: #eee; padding: 15px 0 " align=center><img src="https://raw.githubusercontent.com/pacez/PlaneGame/master/doc/preview.png" height = "360" /></div>
 
 
 ### 运行方法：
