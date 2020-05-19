@@ -15,6 +15,7 @@
 
 ### 构建：
 1. 构建命令：yarn build 或者 npm run build
+
 构建完，会在根目录下生成用于生产环境的dist目录。
 
 
