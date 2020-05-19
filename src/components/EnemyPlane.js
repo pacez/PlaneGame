@@ -21,7 +21,9 @@ export default class EnemyPlane extends Plane {
     ready = () => {
         // 初始化玩家飞机位置，缓存飞机属性
         const { type = 'normal' } =  this.props;
+        // 根据type，添加不同的class，以实现不同种类敌机。
         this.plane.classList.add(this.planeTypeMap[type]);
+
         this.plane.style.visibility = 'visible';
         this.attrbutes = {
             width: parseInt(this.plane.offsetWidth, 10),
