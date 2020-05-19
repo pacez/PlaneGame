@@ -46,8 +46,8 @@ export default class Plane {
 
     // 发射子弹
     sendBullet = () => {
-        const y = this.plane.offsetTop;
-        const x = this.plane.offsetLeft + this.attrbutes.width / 2;
+        const y = this.position.y;
+        const x = this.position.x + this.attrbutes.width / 2;
         this.bullets.push(new Bullet({
             startPoint: { x, y }
         }))
