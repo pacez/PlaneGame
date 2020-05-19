@@ -69,7 +69,7 @@ export default class EnemyPlane extends Plane {
         const { target, gameData } = this.props;
         const bullets = target.bullets;
         this.intervalTargetCrash = setInterval(() => {
-            // 飞机碰撞检查
+            // 飞机碰撞检查 || 或者游戏失败
             if (this.isCrash(target) || gameData.status===3) {
                 // 销毁敌机
                 this.destory();
