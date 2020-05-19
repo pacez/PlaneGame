@@ -96,9 +96,7 @@ export default class PlayerPlane extends Plane {
                 for (var i in this.keyStatus) {
                     const active = this.keyStatus[i]
                     if (active) {
-                        this.move(this.directionMaps[i], {
-                            limitArea: true
-                        });
+                        this.move(this.directionMaps[i]);
                     }
                 }
             }, 50)
