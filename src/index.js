@@ -71,6 +71,7 @@ class Game {
                         score: 100, // 击中一个多少分，默认10分
                         type: 'boss' //type: normal,leader,boss
                     });
+                    return 
                 }
 
                 // 每生产5只普通敌机，产生一只中型敌机
