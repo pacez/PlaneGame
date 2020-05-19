@@ -4,7 +4,7 @@
 
 除了babel运行时，不依赖其他功能性第三方库实现。
 
-![preview](http://wx1.sbimg.cn/2020/05/19/img.md.png)
+![preview](https://raw.githubusercontent.com/pacez/PlaneGame/master/doc/preview.png)
 
 ### 运行方法：
 1. 安装依赖：yarn  或者 npm i 
