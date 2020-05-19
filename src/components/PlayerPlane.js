@@ -10,6 +10,7 @@ export default class PlayerPlane extends Plane {
 
     interval = null;
 
+    // 用于按键状态的标识，处理多方向键同时按住时，斜飞。
     keyStatus = {
         left: false,
         right: false,
@@ -85,6 +86,7 @@ export default class PlayerPlane extends Plane {
         this.setPosition(C_X + x, C_Y + y);
     }
 
+    // 为满足多方向键同时控制方向，所以使用了定时器循环处理按键响应
     createIntervalMove = () => {
         if (this.interval === null) {
             this.interval = setInterval(() => {
