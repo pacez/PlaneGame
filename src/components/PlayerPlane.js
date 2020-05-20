@@ -35,19 +35,16 @@ export default class PlayerPlane extends Plane {
     }
 
     constructor(props) {
+        // 在props传入Plane之前，添加玩家飞机的私有信息。
+        props.className='player-plane';
         super(props);
         this.ready();
     }
 
     ready = () => {
-        // 初始化玩家飞机位置，缓存飞机属性
-        this.plane.classList.add('player-plane');
-        this.plane.style.visibility = 'visible';
-        this.attrbutes = {
-            width: parseInt(this.plane.offsetWidth,10),
-            height: parseInt(this.plane.offsetHeight,10),
-        }
+        // 初始化玩家飞机位置
         this.setPosition((this.mainWidth - this.attrbutes.width) / 2, this.mainHeight - this.attrbutes.height - 20);
+        // 初始化方向控制
         this.initControllerKeyboard();
     }
 

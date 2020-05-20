@@ -8,28 +8,20 @@ import Plane from './Plane';
  */
 export default class EnemyPlane extends Plane {
     constructor(props) {
+        // 在props传入Plane之前，添加敌机的私有信息。
+        // 映射不同种类敌飞机，不同的样式类
+        // 根据type，添加不同的class，以实现不同种类敌机。
+        const { type = 'normal' } =  props;
+        props.className = {
+            'normal': 'enemy-plane',
+            'leader': 'leader-plane',
+            'boss': 'boss-plane',
+        }[type];
         super(props);
         this.ready();
     }
 
-    // 映射不同种类飞机，不同的样式类
-    planeTypeMap = {
-        'normal': 'enemy-plane',
-        'leader': 'leader-plane',
-        'boss': 'boss-plane',
-    }
-
     ready = () => {
-        // 初始化玩家飞机位置，缓存飞机属性
-        const { type = 'normal' } =  this.props;
-        // 根据type，添加不同的class，以实现不同种类敌机。
-        this.plane.classList.add(this.planeTypeMap[type]);
-
-        this.plane.style.visibility = 'visible';
-        this.attrbutes = {
-            width: parseInt(this.plane.offsetWidth, 10),
-            height: parseInt(this.plane.offsetHeight, 10),
-        }
         let x = (this.mainWidth - this.attrbutes.width) * Math.random();
         // 设置初始位置 
         this.setPosition(parseInt(x,10), 0);

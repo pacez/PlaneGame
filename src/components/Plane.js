@@ -24,13 +24,19 @@ export default class Plane {
 
     // 初始化创建dom
     init = (cb) => {
-        const { uuid,blood=1 } = this.props;
+        const { uuid,blood=1,className } = this.props;
         this.plane = document.createElement("div");
         this.plane.className = `plane`;
         this.plane.id = uuid;
         this.plane.style.visibility = "hidden";
         this.blood = blood;
         document.body.appendChild(this.plane);
+        className && this.plane.classList.add(className);
+        this.plane.style.visibility = 'visible';
+        this.attrbutes = {
+            width: parseInt(this.plane.offsetWidth, 10),
+            height: parseInt(this.plane.offsetHeight, 10),
+        }
     }
 
     // 设置飞机位置, 并缓存该位置
