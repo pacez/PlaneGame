@@ -34,7 +34,6 @@ class Game {
     // 设置游戏数据
     setData = (key,value) => {
         this.data[key] = value;
-        this.refreshUI();
     }
     // 游戏自身相关数据
     data = {
@@ -42,60 +41,74 @@ class Game {
         killCount: 0, // 杀敌数
         totalScore: 0, // 总分
     }
+
+    // 敌机被摧毁时
+    destoryEnemyPlane = (score) => {
+        let { killCount, totalScore } = this.data;
+        this.setData('killCount', killCount += 1);
+        this.setData('totalScore', totalScore += score);
+        this.refreshUI();
+    }
+
+    // 玩家飞机被摧毁时
+    destoryPlayerPlane = () => {
+        this.setData('status', 3);
+    }
+
+    // 游戏结束
+    gameOver = () => {
+        window.clearInterval(this.intervalEnemyPlaneFactory);
+    }
+
     //敌机工厂 
     enemyPlaneFactory = () => {
         const { speed, blood } = this.props;
         let leaderCreateCount = 0; // leader出现时机计数器
         let bossCreateCount = 0; // boss出现时机计数器
-        this.intervalEnemyPlaneFactory = setInterval(()=>{
-
+        // 每秒生产一架敌机
+        this.intervalEnemyPlaneFactory = setInterval(() => {
+            const { status } = this.data;
             leaderCreateCount += 1;
-
-            if(this.data.status===2 || this.data.status===3) {
+            if(status===2 || status===3) {
                 // 闯关成功或失败
-                window.clearInterval(this.intervalEnemyPlaneFactory);
+                this.gameOver();
             }
-
             //创建敌机
             if (leaderCreateCount % 5 === 0 && leaderCreateCount > 0) {
                 bossCreateCount += 1;
-
                 if (bossCreateCount % 5 === 0 && bossCreateCount > 0) {
                     // 每生产5只中型敌机，产生一只BOSS敌机
                     new EnemyPlane({
+                        status,
                         blood: blood * 10, // BOSS敌机的血量是普通敌机的5倍
                         speed: speed * .8, // BOSS敌机的速度是普通敌机的.8倍
-                        gameData: this.data,
-                        target: this.PlayerPlane,
-                        setGameData: this.setData,
                         score: 100, // 击中一个多少分，默认10分
-                        type: 'boss' //type: normal,leader,boss
+                        type: 'boss', //type: normal,leader,boss
+                        target: this.PlayerPlane, // 打击目标
+                        destory: this.destoryEnemyPlane // 敌机被击毁时的回调方法
                     });
                     return 
                 }
-
                 // 每生产5只普通敌机，产生一只中型敌机
                 new EnemyPlane({
+                    status,
                     blood: blood * 5, // 中型敌机的血量是普通敌机的3倍
                     speed: speed*1.2, // 中型敌机的速度是普通敌机的1.2倍
-                    gameData: this.data,
-                    target: this.PlayerPlane,
-                    setGameData: this.setData,
                     score: 30, // 击中一个多少分，默认10分
-                    type: 'leader' //type: normal,leader,boss
+                    type: 'leader', //type: normal,leader,boss
+                    target: this.PlayerPlane, // 打击目标
+                    destory: this.destoryEnemyPlane // 敌机被击毁时的回调方法
                 });
                 return
             } 
-
             // 普通敌机
             new EnemyPlane({
-                blood: blood,
-                speed: speed,
-                gameData: this.data,
-                target: this.PlayerPlane,
-                setGameData: this.setData
+                status,
+                blood: blood, // 血量
+                speed: speed, // 速度 
+                target: this.PlayerPlane, // 打击目标
+                destory: this.destoryEnemyPlane // 敌机被击毁时的回调方法
             });
-
         },1000);
     }
     /* 游戏开始 */
@@ -107,8 +120,7 @@ class Game {
         this.PlayerPlane = new PlayerPlane({
             blood: blood,
             speed: speed,
-            gameData: this.data,
-            setGameData: this.setData
+            destory: this.destoryPlayerPlane // 被击毁时的回调方法
         });
         // 批量生产敌机
         this.enemyPlaneFactory();

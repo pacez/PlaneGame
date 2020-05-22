@@ -59,11 +59,11 @@ export default class EnemyPlane extends Plane {
     // 碰撞侦测
     crashChecking = () => {
         // 目标飞机碰撞检测
-        const { target, gameData } = this.props;
+        const { target, status } = this.props;
         const bullets = target.bullets;
         this.intervalTargetCrash = setInterval(() => {
             // 飞机碰撞检查 || 或者游戏失败
-            if (this.isCrash(target) || gameData.status===3) {
+            if (this.isCrash(target) || status===3) {
                 // 销毁敌机
                 this.destory();
                 // 销毁玩家飞机
@@ -121,10 +121,8 @@ export default class EnemyPlane extends Plane {
 
         if (isCount) {
             // 销毁时是否计算分值等
-            const { gameData, setGameData, score=10 } = this.props;
-            const { killCount, totalScore } = gameData;
-            setGameData('killCount', killCount + 1);
-            setGameData('totalScore', totalScore + score );
+            const { score=1 } = this.props;
+            this.props.destory(score);;
         }
     }
 

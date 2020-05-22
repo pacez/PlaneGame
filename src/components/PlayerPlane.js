@@ -169,8 +169,7 @@ export default class PlayerPlane extends Plane {
         document.removeEventListener('keydown', this.keydown);
         document.removeEventListener('keyup', this.keyup);
         this.plane.classList.add('die');
-        const { setGameData } = this.props;
-        setGameData('status',3);
+        this.props.destory();
     }
 
 }
