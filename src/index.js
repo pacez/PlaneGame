@@ -44,6 +44,7 @@ class Game {
 
     // 敌机被摧毁时
     destoryEnemyPlane = (score) => {
+        // 游戏加分，加杀敌数，刷新UI
         let { killCount, totalScore } = this.data;
         this.setData('killCount', killCount += 1);
         this.setData('totalScore', totalScore += score);
@@ -52,6 +53,7 @@ class Game {
 
     // 玩家飞机被摧毁时
     destoryPlayerPlane = () => {
+        // 将游戏状态改为结束，不再产生新的敌机。
         this.setData('status', 3);
     }
 
