@@ -59,11 +59,11 @@ export default class EnemyPlane extends Plane {
     // 碰撞侦测
     crashChecking = () => {
         // 目标飞机碰撞检测
-        const { target, status } = this.props;
+        const { target } = this.props;
         const bullets = target.bullets;
         this.intervalTargetCrash = setInterval(() => {
-            // 飞机碰撞检查 || 或者游戏失败
-            if (this.isCrash(target) || status===3) {
+            // 飞机碰撞检查
+            if (this.isCrash(target)) {
                 // 销毁敌机
                 this.destory();
                 // 销毁玩家飞机

@@ -82,7 +82,6 @@ class Game {
                 if (bossCreateCount % 5 === 0 && bossCreateCount > 0) {
                     // 每生产4只中型敌机，产生一只BOSS敌机
                     new EnemyPlane({
-                        status,
                         blood: blood * 10, // BOSS敌机的血量是普通敌机的5倍
                         speed: speed * .8, // BOSS敌机的速度是普通敌机的.8倍
                         score: 100, // 击中一个多少分，默认10分
@@ -94,7 +93,6 @@ class Game {
                 }
                 // 每生产4只普通敌机，产生一只中型敌机
                 new EnemyPlane({
-                    status,
                     blood: blood * 5, // 中型敌机的血量是普通敌机的3倍
                     speed: speed*1.2, // 中型敌机的速度是普通敌机的1.2倍
                     score: 30, // 击中一个多少分，默认10分
@@ -106,7 +104,6 @@ class Game {
             } 
             // 普通敌机
             new EnemyPlane({
-                status,
                 blood: blood, // 血量
                 speed: speed, // 速度 
                 target: this.PlayerPlane, // 打击目标
