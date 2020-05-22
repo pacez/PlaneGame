@@ -53,12 +53,13 @@ class Game {
 
     // 玩家飞机被摧毁时
     destoryPlayerPlane = () => {
-        // 将游戏状态改为结束，不再产生新的敌机。
+        // 将游戏状态改为结束，不再生产新的敌机。
         this.setData('status', 3);
     }
 
     // 游戏结束
     gameOver = () => {
+        // 不再生产新敌机
         window.clearInterval(this.intervalEnemyPlaneFactory);
     }
 
