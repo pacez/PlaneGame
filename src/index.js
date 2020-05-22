@@ -77,7 +77,7 @@ class Game {
             if (leaderCreateCount % 5 === 0 && leaderCreateCount > 0) {
                 bossCreateCount += 1;
                 if (bossCreateCount % 5 === 0 && bossCreateCount > 0) {
-                    // 每生产5只中型敌机，产生一只BOSS敌机
+                    // 每生产4只中型敌机，产生一只BOSS敌机
                     new EnemyPlane({
                         status,
                         blood: blood * 10, // BOSS敌机的血量是普通敌机的5倍
@@ -89,7 +89,7 @@ class Game {
                     });
                     return 
                 }
-                // 每生产5只普通敌机，产生一只中型敌机
+                // 每生产4只普通敌机，产生一只中型敌机
                 new EnemyPlane({
                     status,
                     blood: blood * 5, // 中型敌机的血量是普通敌机的3倍
