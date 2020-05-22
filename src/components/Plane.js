@@ -19,7 +19,7 @@ export default class Plane {
         this.mainHeight = document.body.offsetHeight; //main的高度
         this.mainWidth = document.body.offsetWidth; //main的宽度
         this.mainTop = 0; //当前main盒子距离top
-        this.init();
+        this.init(); //创建dom
     }
 
     // 初始化创建dom
