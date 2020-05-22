@@ -40,23 +40,6 @@ html,body {
         text-align: center;
         animation: titlecolor 5s infinite;
     }
-    @-webkit-keyframes titlecolor {
-        0% {
-            color: #63a35c;
-        }
-        20% {
-            color: #4f823c;
-        }
-        40% {
-            color: #ff0084;
-        }
-        60% {
-            color: rgb(156, 98, 21);
-        }
-        100% {
-            color: green;
-        }
-    }
     /* 开始按钮 */
     .btn {
         margin: 0 auto;
