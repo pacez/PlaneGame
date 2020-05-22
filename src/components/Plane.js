@@ -23,7 +23,7 @@ export default class Plane {
     }
 
     // 初始化创建dom
-    init = (cb) => {
+    init = () => {
         const { uuid,blood=1,className } = this.props;
         this.plane = document.createElement("div");
         this.plane.className = `plane`;
