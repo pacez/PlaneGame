@@ -6,6 +6,7 @@
 
 <img src="https://raw.githubusercontent.com/pacez/PlaneGame/master/doc/preview.png" height = "360" />
 
+----------
 
 ### 开发：
 1. 安装依赖：yarn  或者 npm i 
@@ -13,11 +14,14 @@
 
 执行完，会自动打开浏览器进入开发预览页，具体基本的热更新能力。
 
+----------
+
 ### 构建：
 1. 构建命令：yarn build 或者 npm run build
 
 构建完，会在根目录下生成用于生产环境的dist目录。
 
+----------
 
 ### 思考步骤：
 #### STEP 1： 将打飞机游戏，抽象对象概念
