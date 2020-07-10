@@ -4,7 +4,7 @@
 
 本游戏除了加载es6必要的babel运行时，不依赖第三方功能性库。
 
-<img src="http://pacez.github.io/images/plane_game_preview.png" height = "360" />
+<img src="https://pacez.github.io/images/plane_game_preview.png" height = "360" />
 
 ----------
 
